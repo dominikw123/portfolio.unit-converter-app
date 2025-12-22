@@ -1,10 +1,10 @@
-import LengthConverter from "@/components/LengthConverter";
-import AreaConverter from "@/components/AreaConverter";
-import WeightConverter from "@/components/WeightConverter";
-import VolumeConverter from "@/components/VolumeConverter";
-import SpeedConverter from "@/components/SpeedConverter";
-import TemperatureConverter from "@/components/TemperatureConverter";
-import CurrencyConverter from "@/components/CurrencyConverter";
+import LengthConverter from "@/components/converters/LengthConverter";
+import AreaConverter from "@/components/converters/AreaConverter";
+import WeightConverter from "@/components/converters/WeightConverter";
+import VolumeConverter from "@/components/converters/VolumeConverter";
+import SpeedConverter from "@/components/converters/SpeedConverter";
+import TemperatureConverter from "@/components/converters/TemperatureConverter";
+import CurrencyConverter from "@/components/converters/CurrencyConverter";
 import { Separator } from "@/components/ui/separator";
 
 export default function App() {
