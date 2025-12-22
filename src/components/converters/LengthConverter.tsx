@@ -4,6 +4,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { lengthUnits, type Unit } from "@/lib/types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRightArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
 export default function LengthConverter() {
@@ -27,14 +29,31 @@ export default function LengthConverter() {
     return value * (factors[from.value] / factors[to.value]);
   };
 
+  const handleFromChange = (value: string) => {
+    setFrom(lengthUnits.find((unit) => unit.value === value)!);
+    setResult(0);
+  };
+
+  const handleToChange = (value: string) => {
+    setTo(lengthUnits.find((unit) => unit.value === value)!);
+    setResult(0);
+  };
+
+  const handleSwap = () => {
+    const temp = from;
+    setFrom(to);
+    setTo(temp);
+    setResult(0);
+  };
+
   return (
     <ConverterWrapper title="Length Converter">
       <div className="flex flex-col gap-4">
-        <div className="flex gap-2">
-          <div className="flex flex-col gap-1">
-            <Label htmlFor="from" className="font-medium text-sm text-gray-500">From:</Label>
-            <Select name="from" value={from.value} onValueChange={(value) => setFrom(lengthUnits.find((unit) => unit.value === value)!)}>
-              <SelectTrigger className="font-medium px-4">
+        <div className="flex gap-2 items-center justify-between">
+          <div className="flex flex-col gap-1 min-w-[140px]">
+            <Label htmlFor="from" className="font-medium text-sm text-gray-500 w-full">From:</Label>
+            <Select name="from" value={from.value} onValueChange={handleFromChange}>
+              <SelectTrigger className="font-medium px-4 w-full">
                 <SelectValue placeholder="Select unit" />
               </SelectTrigger>
               <SelectContent>
@@ -44,10 +63,15 @@ export default function LengthConverter() {
               </SelectContent>
             </Select>
           </div>
-          <div className="flex flex-col gap-1">
-            <Label htmlFor="to" className="font-medium text-sm text-gray-500">To:</Label>
-            <Select name="to" value={to.value} onValueChange={(value) => setTo(lengthUnits.find((unit) => unit.value === value)!)}>
-              <SelectTrigger className="font-medium px-4">
+          <div>
+            <Button variant="outline" size="icon-lg" className="p-0 rounded-full" onClick={handleSwap}>
+              <FontAwesomeIcon icon={faArrowRightArrowLeft} />
+            </Button>
+          </div>
+          <div className="flex flex-col gap-1 min-w-[140px]">
+            <Label htmlFor="to" className="font-medium text-sm text-gray-500 w-full">To:</Label>
+            <Select name="to" value={to.value} onValueChange={handleToChange}>
+              <SelectTrigger className="font-medium px-4 w-full">
                 <SelectValue placeholder="Select unit" />
               </SelectTrigger>
               <SelectContent>
@@ -62,7 +86,7 @@ export default function LengthConverter() {
           <Label htmlFor="amount" className="font-medium text-sm text-gray-500">Amount:</Label>
           <Input name="amount" className="font-medium px-4" type="number" value={value} onChange={(e) => setValue(Number(e.target.value))} />
         </div>
-        <div className="flex items-center justify-between gap-2">
+        <div className="flex items-center justify-between gap-2 h-[44px]">
           <div>
             {(result > 0 && to.value !== from.value) && (
               <>
