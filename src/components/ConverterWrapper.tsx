@@ -1,9 +1,17 @@
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-export default function ConverterWrapper({ children }: { children: React.ReactNode; }) {
+type ConverterWrapperProps = {
+  children: React.ReactNode;
+  title: string;
+};
+
+export default function ConverterWrapper({ children, title }: ConverterWrapperProps) {
   return (
-    <Card className="flex flex-col items-center justify-center h-full min-h-screen w-screen shadow-none relative p-0 sm:min-h-auto sm:w-full sm:max-w-lg sm:border-gray-200 sm:rounded-xl sm:shadow-sm">
-      <CardContent className="flex flex-col gap-4 min-w-full max-w-[450px] sm:max-w-xl min-h-screen max-h-auto sm:min-h-auto p-5">
+    <Card className="flex flex-col justify-center max-h-auto w-screen shadow-none gap-4 relative p-5 sm:w-full sm:max-w-lg sm:border-gray-200 sm:rounded-xl sm:shadow-sm">
+      <CardHeader className="p-0 min-w-full max-w-[450px]">
+        <CardTitle className="text-2xl">{title}</CardTitle>
+      </CardHeader>
+      <CardContent className="flex flex-col gap-4 min-w-full max-w-[450px] sm:max-w-xl max-h-auto">
         {children}
       </CardContent>
     </Card>
