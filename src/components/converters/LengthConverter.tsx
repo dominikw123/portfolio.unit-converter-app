@@ -1,6 +1,7 @@
 import ConverterWrapper from "@/components/ConverterWrapper";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { lengthUnits, type Unit } from "@/lib/types";
 import { useState } from "react";
@@ -29,32 +30,48 @@ export default function LengthConverter() {
   return (
     <ConverterWrapper title="Length Converter">
       <div className="flex flex-col gap-4">
-        <Input className="font-medium px-4" type="number" value={value} onChange={(e) => setValue(Number(e.target.value))} />
         <div className="flex gap-2">
-          <Select value={from.value} onValueChange={(value) => setFrom(lengthUnits.find((unit) => unit.value === value)!)}>
-            <SelectTrigger className="font-medium px-4">
-              <SelectValue placeholder="Select unit" />
-            </SelectTrigger>
-            <SelectContent>
-              {lengthUnits.map((unit) => (
-                <SelectItem key={unit.value} value={unit.value}>{unit.label}</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          <Select value={to.value} onValueChange={(value) => setTo(lengthUnits.find((unit) => unit.value === value)!)}>
-            <SelectTrigger className="font-medium px-4">
-              <SelectValue placeholder="Select unit" />
-            </SelectTrigger>
-            <SelectContent>
-              {lengthUnits.map((unit) => (
-                <SelectItem key={unit.value} value={unit.value}>{unit.label}</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <div className="flex flex-col gap-1">
+            <Label htmlFor="from" className="font-medium text-sm text-gray-500">From:</Label>
+            <Select name="from" value={from.value} onValueChange={(value) => setFrom(lengthUnits.find((unit) => unit.value === value)!)}>
+              <SelectTrigger className="font-medium px-4">
+                <SelectValue placeholder="Select unit" />
+              </SelectTrigger>
+              <SelectContent>
+                {lengthUnits.map((unit) => (
+                  <SelectItem key={unit.value} value={unit.value}>{unit.label}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex flex-col gap-1">
+            <Label htmlFor="to" className="font-medium text-sm text-gray-500">To:</Label>
+            <Select name="to" value={to.value} onValueChange={(value) => setTo(lengthUnits.find((unit) => unit.value === value)!)}>
+              <SelectTrigger className="font-medium px-4">
+                <SelectValue placeholder="Select unit" />
+              </SelectTrigger>
+              <SelectContent>
+                {lengthUnits.map((unit) => (
+                  <SelectItem key={unit.value} value={unit.value}>{unit.label}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
         </div>
-        <div className="flex items-center gap-2">
-          <Button className="max-w-fit" size="lg" onClick={() => setResult(convert(value, from, to))}>Convert</Button>
-          <p className="text-2xl font-medium">{result} {to.label}</p>
+        <div className="flex flex-col gap-1">
+          <Label htmlFor="amount" className="font-medium text-sm text-gray-500">Amount:</Label>
+          <Input name="amount" className="font-medium px-4" type="number" value={value} onChange={(e) => setValue(Number(e.target.value))} />
+        </div>
+        <div className="flex items-center justify-between gap-2">
+          <div>
+            {(result > 0 && to.value !== from.value) && (
+              <>
+                <Label htmlFor="result" className="font-medium text-sm text-gray-500">Result:</Label>
+                <p id="result" className="font-medium text-green-600 text-md"> {result} {to.label} </p>
+              </>
+            )}
+          </div>
+          <Button size="lg" onClick={() => setResult(convert(value, from, to))}>Convert</Button>
         </div>
       </div>
     </ConverterWrapper>
