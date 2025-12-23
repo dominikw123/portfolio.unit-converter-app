@@ -11,5 +11,5 @@ const weightFactors: Record<Unit["value"], number> = {
 } as const;
 
 export default function useWeightConverter() {
-  return useLinearConverter<Unit["value"]>(weightFactors, { defaultFrom: "mg", defaultTo: "mg" });
+  return useLinearConverter<Unit["value"]>(weightFactors, { defaultFrom: "mg", defaultTo: "g" });
 }

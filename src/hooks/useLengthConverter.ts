@@ -13,5 +13,5 @@ const lengthFactors: Record<Unit["value"], number> = {
 } as const;
 
 export default function useLengthConverter() {
-  return useLinearConverter<Unit["value"]>(lengthFactors, { defaultFrom: "mm", defaultTo: "mm" });
+  return useLinearConverter<Unit["value"]>(lengthFactors, { defaultFrom: "mm", defaultTo: "cm" });
 }

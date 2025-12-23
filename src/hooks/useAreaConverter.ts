@@ -14,5 +14,5 @@ const areaFactors: Record<Unit["value"], number> = {
 } as const;
 
 export default function useAreaConverter() {
-  return useLinearConverter<Unit["value"]>(areaFactors, { defaultFrom: "mm2", defaultTo: "mm2" });
+  return useLinearConverter<Unit["value"]>(areaFactors, { defaultFrom: "mm2", defaultTo: "cm2" });
 }
