@@ -13,3 +13,15 @@ export const lengthUnits: Unit[] = [
   { label: "Yard", value: "yd" },
   { label: "Mile", value: "mi" }
 ];
+
+export const areaUnits: Unit[] = [
+  { label: "Square millimeter", value: "mm2" },
+  { label: "Square centimeter", value: "cm2" },
+  { label: "Square meter", value: "m2" },
+  { label: "Square kilometer", value: "km2" },
+  { label: "Hectare", value: "ha" },
+  { label: "Square inch", value: "in2" },
+  { label: "Square foot", value: "ft2" },
+  { label: "Square yard", value: "yd2" },
+  { label: "Acre", value: "ac" }
+];
