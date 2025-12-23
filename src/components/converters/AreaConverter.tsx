@@ -3,49 +3,17 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import useAreaConverter from "@/hooks/useAreaConverter";
 import { areaUnits, type Unit } from "@/lib/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
 
 export default function AreaConverter() {
-  const [value, setValue] = useState<number>(0);
-  const [from, setFrom] = useState<Unit>(areaUnits[0]);
-  const [to, setTo] = useState<Unit>(areaUnits[0]);
-  const [result, setResult] = useState<number>(0);
+  const { value, setValue, from, setFrom, to, setTo, result, convert, swap } = useAreaConverter();
 
-  const convert = (value: number, from: Unit, to: Unit) => {
-    const factors: Record<Unit["value"], number> = {
-      mm2: 0.000001,
-      cm2: 0.0001,
-      m2: 1,
-      km2: 1_000_000,
-      ha: 10_000,
-      in2: 0.00064516,
-      ft2: 0.092903,
-      yd2: 0.836127,
-      ac: 4046.86
-    };
-
-    return value * (factors[from.value] / factors[to.value]);
-  };
-
-  const handleFromChange = (value: string) => {
-    setFrom(areaUnits.find((unit) => unit.value === value)!);
-    setResult(0);
-  };
-
-  const handleToChange = (value: string) => {
-    setTo(areaUnits.find((unit) => unit.value === value)!);
-    setResult(0);
-  };
-
-  const handleSwap = () => {
-    const temp = from;
-    setFrom(to);
-    setTo(temp);
-    setResult(0);
-  };
+  const handleFromChange = (value: string) => setFrom(value as Unit["value"]);
+  const handleToChange = (value: string) => setTo(value as Unit["value"]);
+  const handleSwap = () => swap();
 
   return (
     <ConverterWrapper title="Area Converter">
@@ -53,7 +21,7 @@ export default function AreaConverter() {
         <div className="flex gap-2 items-center justify-between">
           <div className="flex flex-col gap-1 min-w-[180px]">
             <Label htmlFor="from" className="font-medium text-sm text-gray-500 w-full">From:</Label>
-            <Select name="from" value={from.value} onValueChange={handleFromChange}>
+            <Select name="from" value={from} onValueChange={handleFromChange}>
               <SelectTrigger className="font-medium px-4 w-full">
                 <SelectValue placeholder="Select unit" />
               </SelectTrigger>
@@ -71,7 +39,7 @@ export default function AreaConverter() {
           </div>
           <div className="flex flex-col gap-1 min-w-[180px]">
             <Label htmlFor="to" className="font-medium text-sm text-gray-500 w-full">To:</Label>
-            <Select name="to" value={to.value} onValueChange={handleToChange}>
+            <Select name="to" value={to} onValueChange={handleToChange}>
               <SelectTrigger className="font-medium px-4 w-full">
                 <SelectValue placeholder="Select unit" />
               </SelectTrigger>
@@ -89,14 +57,14 @@ export default function AreaConverter() {
         </div>
         <div className="flex items-center justify-between gap-2 h-[44px]">
           <div>
-            {(result > 0 && to.value !== from.value) && (
+            {(result !== null && result > 0 && to !== from) && (
               <>
                 <Label htmlFor="result" className="font-medium text-sm text-gray-500">Result:</Label>
-                <p id="result" className="font-medium text-green-600 text-md"> {result} {to.label} </p>
+                <p id="result" className="font-medium text-green-600 text-md"> {result} {to} </p>
               </>
             )}
           </div>
-          <Button size="lg" onClick={() => setResult(convert(value, from, to))}>Convert</Button>
+          <Button size="lg" onClick={convert}>Convert</Button>
         </div>
       </div>
     </ConverterWrapper>
