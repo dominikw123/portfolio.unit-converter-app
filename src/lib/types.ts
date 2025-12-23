@@ -25,3 +25,12 @@ export const areaUnits: Unit[] = [
   { label: "Square yard", value: "yd2" },
   { label: "Acre", value: "ac" }
 ];
+
+export const weightUnits: Unit[] = [
+  { label: "Milligram", value: "mg" },
+  { label: "Gram", value: "g" },
+  { label: "Kilogram", value: "kg" },
+  { label: "Tonne", value: "t" },
+  { label: "Ounce", value: "oz" },
+  { label: "Pound", value: "lb" }
+];
