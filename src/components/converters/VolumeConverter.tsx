@@ -19,7 +19,7 @@ export default function WeightConverter() {
     <ConverterWrapper title="Volume Converter">
       <div className="flex flex-col gap-4">
         <div className="flex gap-2 items-center justify-between">
-          <div className="flex flex-col gap-1 min-w-[180px]">
+          <div className="flex flex-col gap-1 min-w-[185px]">
             <Label htmlFor="from" className="font-medium text-sm text-gray-500 w-full">From:</Label>
             <Select name="from" value={from} onValueChange={handleFromChange}>
               <SelectTrigger className="font-medium px-4 w-full">
@@ -37,7 +37,7 @@ export default function WeightConverter() {
               <FontAwesomeIcon icon={faArrowRightArrowLeft} />
             </Button>
           </div>
-          <div className="flex flex-col gap-1 min-w-[180px]">
+          <div className="flex flex-col gap-1 min-w-[185px]">
             <Label htmlFor="to" className="font-medium text-sm text-gray-500 w-full">To:</Label>
             <Select name="to" value={to} onValueChange={handleToChange}>
               <SelectTrigger className="font-medium px-4 w-full">
