@@ -34,3 +34,15 @@ export const weightUnits: Unit[] = [
   { label: "Ounce", value: "oz" },
   { label: "Pound", value: "lb" }
 ];
+
+export const volumeUnits: Unit[] = [
+  { label: "Milliliter", value: "ml" },
+  { label: "Liter", value: "l" },
+  { label: "Cubic meter", value: "m3" },
+  { label: "Teaspoon", value: "tsp" },
+  { label: "Tablespoon", value: "tbsp" },
+  { label: "Cup", value: "cup" },
+  { label: "Pint", value: "pt" },
+  { label: "Quart", value: "qt" },
+  { label: "Gallon", value: "gal" }
+];
