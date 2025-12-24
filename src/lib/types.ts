@@ -46,3 +46,11 @@ export const volumeUnits: Unit[] = [
   { label: "Quart", value: "qt" },
   { label: "Gallon", value: "gal" }
 ];
+
+export const speedUnits: Unit[] = [
+  { label: "Meter per second", value: "ms" },
+  { label: "Kilometer per hour", value: "kmh" },
+  { label: "Mile per hour", value: "mph" },
+  { label: "Foot per second", value: "fps" },
+  { label: "Knot", value: "kt" }
+];
