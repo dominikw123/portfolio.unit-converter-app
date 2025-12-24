@@ -11,17 +11,17 @@ export default function App() {
   return (
     <main className="p-0 flex flex-col gap-4 items-center w-full min-h-screen overflow-x-hidden sm:justify-center sm:p-10">
       <LengthConverter />
-      <Separator className="sm:hidden" />
+      <Separator />
       <AreaConverter />
-      <Separator className="sm:hidden" />
+      <Separator />
       <WeightConverter />
-      <Separator className="sm:hidden" />
+      <Separator />
       <VolumeConverter />
-      <Separator className="sm:hidden" />
+      <Separator />
       <SpeedConverter />
-      <Separator className="sm:hidden" />
+      <Separator />
       <TemperatureConverter />
-      <Separator className="sm:hidden" />
+      <Separator />
       <CurrencyConverter />
     </main>
   );
