@@ -6,7 +6,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-
 export function toCelsius(value: number, from: TemperatureUnit): number {
   switch (from) {
     case "Celsius":

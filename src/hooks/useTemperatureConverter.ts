@@ -7,23 +7,27 @@ export default function useTemperatureConverter() {
   const [from, setFrom] = useState<TemperatureUnit>("Celsius");
   const [to, setTo] = useState<TemperatureUnit>("Fahrenheit");
   const [result, setResult] = useState<number | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const convert = () => {
     const celsius = toCelsius(value, from);
     const converted = fromCelsius(celsius, to);
 
     if (to === "Kelvin" && converted < 0) {
-      setResult(null);
+      setError("Temperature below absolute zero!");
+      setResult(1);
       return;
     }
 
     setResult(Number(converted.toFixed(2)));
+    setError(null);
   };
 
   const swap = () => {
     setFrom(to);
     setTo(from);
     setResult(null);
+    setError(null);
   };
 
   return {
@@ -34,6 +38,7 @@ export default function useTemperatureConverter() {
     to,
     setTo,
     result,
+    error,
     convert,
     swap
   };
