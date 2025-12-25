@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { TemperatureUnit } from "@/lib/types";
+import { toCelsius, fromCelsius } from "@/lib/utils";
 
 export default function useTemperatureConverter() {
   const [value, setValue] = useState<number>(0);
@@ -36,30 +37,4 @@ export default function useTemperatureConverter() {
     convert,
     swap
   };
-}
-
-function toCelsius(value: number, from: TemperatureUnit): number {
-  switch (from) {
-    case "Celsius":
-      return value;
-    case "Fahrenheit":
-      return (value - 32) * 5 / 9;
-    case "Kelvin":
-      return value - 273.15;
-    default:
-      return value;
-  }
-}
-
-function fromCelsius(value: number, to: TemperatureUnit): number {
-  switch (to) {
-    case "Celsius":
-      return value;
-    case "Fahrenheit":
-      return value * 9 / 5 + 32;
-    case "Kelvin":
-      return value + 273.15;
-    default:
-      return value;
-  }
 }
