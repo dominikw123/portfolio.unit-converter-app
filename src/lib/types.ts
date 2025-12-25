@@ -54,3 +54,11 @@ export const speedUnits: Unit[] = [
   { label: "Foot per second", value: "fps" },
   { label: "Knot", value: "kt" }
 ];
+
+export type TemperatureUnit = "Celsius" | "Fahrenheit" | "Kelvin";
+
+export const temperatureUnits: Unit[] = [
+  { label: "Celsius", value: "Celsius" },
+  { label: "Fahrenheit", value: "Fahrenheit" },
+  { label: "Kelvin", value: "Kelvin" }
+];
