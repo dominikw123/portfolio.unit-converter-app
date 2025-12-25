@@ -4,8 +4,8 @@ import { toCelsius, fromCelsius } from "@/lib/utils";
 
 export default function useTemperatureConverter() {
   const [value, setValue] = useState<number>(0);
-  const [from, setFrom] = useState<TemperatureUnit>("Celsius");
-  const [to, setTo] = useState<TemperatureUnit>("Fahrenheit");
+  const [from, setFrom] = useState<TemperatureUnit>("C");
+  const [to, setTo] = useState<TemperatureUnit>("F");
   const [result, setResult] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -13,7 +13,7 @@ export default function useTemperatureConverter() {
     const celsius = toCelsius(value, from);
     const converted = fromCelsius(celsius, to);
 
-    if (to === "Kelvin" && converted < 0) {
+    if (to === "K" && converted < 0) {
       setError("Temperature below absolute zero!");
       setResult(1);
       return;

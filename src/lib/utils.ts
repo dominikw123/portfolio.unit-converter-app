@@ -8,11 +8,11 @@ export function cn(...inputs: ClassValue[]) {
 
 export function toCelsius(value: number, from: TemperatureUnit): number {
   switch (from) {
-    case "Celsius":
+    case "C":
       return value;
-    case "Fahrenheit":
+    case "F":
       return (value - 32) * 5 / 9;
-    case "Kelvin":
+    case "K":
       return value - 273.15;
     default:
       return value;
@@ -21,11 +21,11 @@ export function toCelsius(value: number, from: TemperatureUnit): number {
 
 export function fromCelsius(value: number, to: TemperatureUnit): number {
   switch (to) {
-    case "Celsius":
+    case "C":
       return value;
-    case "Fahrenheit":
+    case "F":
       return value * 9 / 5 + 32;
-    case "Kelvin":
+    case "K":
       return value + 273.15;
     default:
       return value;

@@ -55,10 +55,10 @@ export const speedUnits: Unit[] = [
   { label: "Knot", value: "kt" }
 ];
 
-export type TemperatureUnit = "Celsius" | "Fahrenheit" | "Kelvin";
+export type TemperatureUnit = "C" | "F" | "K";
 
 export const temperatureUnits: Unit[] = [
-  { label: "Celsius", value: "Celsius" },
-  { label: "Fahrenheit", value: "Fahrenheit" },
-  { label: "Kelvin", value: "Kelvin" }
+  { label: "Celsius", value: "C" },
+  { label: "Fahrenheit", value: "F" },
+  { label: "Kelvin", value: "K" }
 ];
