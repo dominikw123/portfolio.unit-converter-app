@@ -10,10 +10,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export default function CurrencyConverter() {
-  const { value, setValue, from, setFrom, to, setTo, result, loading, error, convert, swap } = useCurrencyConverter();
+  const { value, setValue, from, setFrom, to, setTo, result, setResult, loading, error, convert, swap } = useCurrencyConverter();
 
-  const handleFromChange = (value: string) => setFrom(value as CurrencyCode);
-  const handleToChange = (value: string) => setTo(value as CurrencyCode);
+  const handleFromChange = (value: string) => {
+    setFrom(value as CurrencyCode);
+    setResult(null);
+  };
+
+  const handleToChange = (value: string) => {
+    setTo(value as CurrencyCode);
+    setResult(null);
+  };
+
   const handleSwap = () => swap();
 
   return (
@@ -70,7 +78,7 @@ export default function CurrencyConverter() {
                 <p id="error" className="font-medium text-red-600 text-md"> {error} </p>
               </>
             )}
-            {!loading && !error && result !== null && (
+            {!loading && !error && result !== null && from !== to && (
               <>
                 <Label htmlFor="result" className="font-medium text-sm text-gray-500">Result:</Label>
                 <p id="result" className="font-medium text-green-600 text-md"> {result} {to} </p>

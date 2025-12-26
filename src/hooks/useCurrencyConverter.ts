@@ -67,6 +67,7 @@ export default function useCurrencyConverter() {
     setFrom,
     to,
     setTo,
+    setResult,
     result,
     loading,
     error,
