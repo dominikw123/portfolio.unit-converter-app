@@ -3,6 +3,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import ThreeDotsLoader from "@/components/ThreeDotsLoader";
 import useCurrencyConverter from "@/hooks/useCurrencyConverter";
 import { currencyUnits, type CurrencyCode } from "@/lib/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -57,10 +58,22 @@ export default function CurrencyConverter() {
         </div>
         <div className="flex items-center justify-between gap-2 h-[44px]">
           <div>
-            {(result !== null && to !== from) && (
+            {loading && (
               <>
                 <Label htmlFor="result" className="font-medium text-sm text-gray-500">Result:</Label>
-                {error ? <p id="error" className="font-medium text-red-600 text-md"> {error} </p> : <p id="result" className="font-medium text-green-600 text-md"> {result} {to} </p>}
+                <ThreeDotsLoader />
+              </>
+            )}
+            {!loading && error && (
+              <>
+                <Label htmlFor="result" className="font-medium text-sm text-gray-500">Result:</Label>
+                <p id="error" className="font-medium text-red-600 text-md"> {error} </p>
+              </>
+            )}
+            {!loading && !error && result !== null && (
+              <>
+                <Label htmlFor="result" className="font-medium text-sm text-gray-500">Result:</Label>
+                <p id="result" className="font-medium text-green-600 text-md"> {result} {to} </p>
               </>
             )}
           </div>
