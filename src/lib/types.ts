@@ -79,3 +79,19 @@ export const currencyUnits: Unit[] = [
   { label: "Czech Koruna", value: "CZK" },
   { label: "Hungarian Forint", value: "HUF" }
 ];
+
+export type CurrencyCode =
+  | "EUR"
+  | "USD"
+  | "PLN"
+  | "GBP"
+  | "CHF"
+  | "JPY"
+  | "CAD"
+  | "AUD"
+  | "CNY"
+  | "SEK"
+  | "NOK"
+  | "DKK"
+  | "CZK"
+  | "HUF";
