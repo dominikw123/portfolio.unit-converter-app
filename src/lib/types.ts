@@ -62,3 +62,20 @@ export const temperatureUnits: Unit[] = [
   { label: "Fahrenheit", value: "F" },
   { label: "Kelvin", value: "K" }
 ];
+
+export const currencyUnits: Unit[] = [
+  { label: "Euro", value: "EUR" },
+  { label: "US Dollar", value: "USD" },
+  { label: "Polish Zloty", value: "PLN" },
+  { label: "British Pound", value: "GBP" },
+  { label: "Swiss Franc", value: "CHF" },
+  { label: "Japanese Yen", value: "JPY" },
+  { label: "Canadian Dollar", value: "CAD" },
+  { label: "Australian Dollar", value: "AUD" },
+  { label: "Chinese Yuan", value: "CNY" },
+  { label: "Swedish Krona", value: "SEK" },
+  { label: "Norwegian Krone", value: "NOK" },
+  { label: "Danish Krone", value: "DKK" },
+  { label: "Czech Koruna", value: "CZK" },
+  { label: "Hungarian Forint", value: "HUF" }
+];
