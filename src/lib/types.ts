@@ -1,3 +1,5 @@
+export type Theme = "light" | "dark";
+
 export type Unit = {
   label: string;
   value: string;
