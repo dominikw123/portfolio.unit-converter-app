@@ -19,7 +19,7 @@ export default function useTemperatureConverter() {
       return;
     }
 
-    setResult(Number(converted.toFixed(2)));
+    setResult(Number(converted.toFixed(10)));
     setError(null);
   };
 

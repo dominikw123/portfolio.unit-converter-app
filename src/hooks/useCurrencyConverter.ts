@@ -24,7 +24,7 @@ export default function useCurrencyConverter() {
     }
 
     if (from === to) {
-      setResult(value);
+      setResult(Number(value.toFixed(10)));
       return;
     }
 
@@ -43,7 +43,7 @@ export default function useCurrencyConverter() {
 
       if (!rate) throw new Error("Currency not supported!");
 
-      setResult(value * rate);
+      setResult(Number((value * rate).toFixed(12)));
     } catch (error) {
       setError((error as Error).message);
       setResult(null);

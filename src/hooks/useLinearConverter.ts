@@ -16,8 +16,8 @@ export default function useLinearConverter<T extends string>(
   const [result, setResult] = useState<number | null>(null);
 
   const convert = () => {
-    if (from === to) setResult(value);
-    else setResult(value * (factors[from] / factors[to]));
+    if (from === to) setResult(Number(value.toFixed(10)));
+    else setResult(Number((value * (factors[from] / factors[to])).toFixed(10)));
   };
 
   const swap = () => {
