@@ -18,7 +18,7 @@ export default function LengthConverter() {
   return (
     <ConverterWrapper title="Length Converter">
       <div className="flex flex-col gap-4">
-        <div className="flex gap-2 items-center justify-between">
+        <div className="grid grid-cols-[2fr_1fr] grid-rows-1 gap-2 w-full sm:grid-cols-[185px_auto_185px] sm:items-center">
           <div className="flex flex-col gap-1 min-w-[185px]">
             <Label htmlFor="from" className="font-medium text-sm text-gray-500 w-full">From:</Label>
             <Select name="from" value={from} onValueChange={handleFromChange}>
@@ -32,7 +32,7 @@ export default function LengthConverter() {
               </SelectContent>
             </Select>
           </div>
-          <div>
+          <div className="flex row-span-2 mt-5 ml-3 items-center sm:justify-center sm:mt-0 sm:ml-0">
             <Button variant="outline" size="icon-lg" className="p-0 rounded-full" onClick={handleSwap}>
               <FontAwesomeIcon icon={faArrowRightArrowLeft} />
             </Button>
