@@ -6,6 +6,12 @@ Currency conversion uses live rates from the Frankfurter API, and user preferenc
 ## __🚀 Live Preview__
 [Click here to view the app online!](https://portfolio-unit-converter-app2204.vercel.app/)
 
+## __📸 Screenshots__
+<div style="display: flex; gap: 12px;">
+  <img src="./screenshots/desktop-light.png" alt="Desktop Light" width="49%" style="border-radius: 5px;" />
+  <img src="./screenshots/desktop-dark.png" alt="Desktop Dark" width="49%" style="border-radius: 5px;" />
+</div>
+
 ## __🧰 Tech Stack__
 - Vite
 - React
